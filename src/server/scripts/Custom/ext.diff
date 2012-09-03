@@ -1,0 +1,199 @@
+# HG changeset patch
+# User skel.wow
+# Date 1288423255 -10800
+# Node ID c373e21d91d2fb2e51596eaa81328594e31db1c9
+# Parent  f3f271b3107146d076abe25d6b832f9b693953bb
+add external mail
+
+diff -r f3f271b31071 -r c373e21d91d2 src/server/game/Mails/Mail.cpp
+--- a/src/server/game/Mails/Mail.cpp    Sat Oct 30 09:49:41 2010 +0300
++++ b/src/server/game/Mails/Mail.cpp    Sat Oct 30 10:20:55 2010 +0300
+@@ -255,3 +255,86 @@
+         deleteIncludedItems(temp);
+     }
+ }
++
++void WorldSession::SendExternalMails()
++{
++    sLog.outString("EXTERNAL MAIL> Sending mails in queue...");
++    QueryResult result = CharacterDatabase.Query("SELECT id,receiver,subject,message,money,item,item_count FROM mail_external");
++    SQLTransaction trans = CharacterDatabase.BeginTransaction();
++    if(!result)
++    {
++        sLog.outString("EXTERNAL MAIL> No mails in queue...");
++//        delete result;
++        return;
++    }
++    else
++    {
++        uint32 last_id = 0;
++        MailDraft* mail = NULL;
++        uint32 last_receiver_guid;
++
++        do
++        {
++            Field *fields = result->Fetch();
++            uint32 id = fields[0].GetUInt32();
++            uint64 receiver_guid = fields[1].GetUInt64();
++            std::string subject = fields[2].GetString();
++            std::string body = fields[3].GetString();
++            uint32 money = fields[4].GetUInt32();
++            uint32 itemId = fields[5].GetUInt32();
++            uint32 itemCount = fields[6].GetUInt32();
++
++            Player *receiver = sObjectMgr.GetPlayer( receiver_guid );
++
++            if (id != last_id)
++            {
++                // send mail
++                if (last_id != 0)
++                {
++                    sLog.outString("EXTERNAL MAIL> Sending mail to character with guid %d", last_receiver_guid);
++                    mail->SendMailTo(trans,MailReceiver(last_receiver_guid), MailSender(MAIL_NORMAL, 0, MAIL_STATIONERY_GM), MAIL_CHECK_MASK_RETURNED);
++                    delete mail;
++                    CharacterDatabase.PExecute("DELETE FROM mail_external WHERE id=%u", last_id);
++                    sLog.outString("EXTERNAL MAIL> Mail sent");
++                }
++
++                //Create the maildraft
++                mail = new MailDraft( subject, body );
++
++                if(money)
++                {
++                    sLog.outString("EXTERNAL MAIL> Adding money");
++                    mail->AddMoney(money);
++                }
++            }
++
++            if (itemId)
++            {
++                sLog.outString("EXTERNAL MAIL> Adding %u of item with id %u", itemCount, itemId);
++                Item* mailItem = Item::CreateItem( itemId, itemCount, receiver );
++                mailItem->SaveToDB(trans);
++                mail->AddItem(mailItem);
++            }
++
++            last_id = id;
++            last_receiver_guid = receiver_guid;
++
++        }
++        while( result->NextRow() );
++
++        // we only send a mail when mail_id!=last_mail_id, so we need to send the very last mail here:
++        if (last_id != 0)
++        {
++            // send last mail
++            sLog.outString("EXTERNAL MAIL> Sending mail to character with guid %d", last_receiver_guid);
++
++            mail->SendMailTo(trans,MailReceiver(last_receiver_guid), MailSender(MAIL_NORMAL, 0, MAIL_STATIONERY_GM), MAIL_CHECK_MASK_RETURNED);
++            delete mail;
++            CharacterDatabase.PExecute("DELETE FROM mail_external WHERE id=%u", last_id);
++            sLog.outString("EXTERNAL MAIL> Mail sent");
++        }
++    }
++
++    CharacterDatabase.CommitTransaction(trans);
++    sLog.outString("EXTERNAL MAIL> All Mails Sent...");
++}
+\ No newline at end of file
+diff -r f3f271b31071 -r c373e21d91d2 src/server/game/Server/WorldSession.h
+--- a/src/server/game/Server/WorldSession.h    Sat Oct 30 09:49:41 2010 +0300
++++ b/src/server/game/Server/WorldSession.h    Sat Oct 30 10:20:55 2010 +0300
+@@ -261,6 +261,7 @@
+             }
+         }
+         //used with item_page table
++        static void SendExternalMails();
+         bool SendItemInfo(uint32 itemid, WorldPacket data);
+         //auction
+         void SendAuctionHello(uint64 guid, Creature * unit);
+diff -r f3f271b31071 -r c373e21d91d2 src/server/game/World/World.cpp
+--- a/src/server/game/World/World.cpp    Sat Oct 30 09:49:41 2010 +0300
++++ b/src/server/game/World/World.cpp    Sat Oct 30 10:20:55 2010 +0300
+@@ -881,7 +881,10 @@
+     m_int_configs[CONFIG_GROUP_VISIBILITY] = sConfig.GetIntDefault("Visibility.GroupMode", 1);
+ 
+     m_int_configs[CONFIG_MAIL_DELIVERY_DELAY] = sConfig.GetIntDefault("MailDeliveryDelay",HOUR);
+-
++    m_int_configs[CONFIG_EXTERNAL_MAIL] = sConfig.GetIntDefault("ExternalMail", 0);
++    m_int_configs[CONFIG_EXTERNAL_MAIL_INTERVAL] = sConfig.GetIntDefault("ExternalMailInterval", 1);    
++   
++    
+     m_int_configs[CONFIG_UPTIME_UPDATE] = sConfig.GetIntDefault("UpdateUptimeInterval", 10);
+     if (int32(m_int_configs[CONFIG_UPTIME_UPDATE]) <= 0)
+     {
+@@ -1701,7 +1704,7 @@
+     //one second is 1000 -(tested on win system)
+     //TODO: Get rid of magic numbers
+     mail_timer = ((((localtime(&m_gameTime)->tm_hour + 20) % 24)* HOUR * IN_MILLISECONDS) / m_timers[WUPDATE_AUCTIONS].GetInterval());
+-                                                            //1440
++    extmail_timer.SetInterval(m_int_configs[CONFIG_EXTERNAL_MAIL_INTERVAL] * MINUTE * IN_MILLISECONDS);                                                         //1440
+     mail_timer_expires = ((DAY * IN_MILLISECONDS) / (m_timers[WUPDATE_AUCTIONS].GetInterval()));
+     sLog.outDebug("Mail timer set to: " UI64FMTD ", mail return is called every " UI64FMTD " minutes", uint64(mail_timer), uint64(mail_timer_expires));
+ 
+@@ -1920,6 +1923,17 @@
+     if (m_gameTime > m_NextRandomBGReset)
+         ResetRandomBG();
+ 
++    /// Handle external mail
++    if (m_int_configs[CONFIG_EXTERNAL_MAIL] != 0)
++    {
++        extmail_timer.Update(diff);
++        if (extmail_timer.Passed())
++        {
++            WorldSession::SendExternalMails();
++            extmail_timer.Reset();
++        }
++    }    
++
+     /// <ul><li> Handle auctions when the timer has passed
+     if (m_timers[WUPDATE_AUCTIONS].Passed())
+     {
+diff -r f3f271b31071 -r c373e21d91d2 src/server/game/World/World.h
+--- a/src/server/game/World/World.h    Sat Oct 30 09:49:41 2010 +0300
++++ b/src/server/game/World/World.h    Sat Oct 30 10:20:55 2010 +0300
+@@ -236,6 +236,8 @@
+     CONFIG_START_GM_LEVEL,
+     CONFIG_GROUP_VISIBILITY,
+     CONFIG_MAIL_DELIVERY_DELAY,
++    CONFIG_EXTERNAL_MAIL,
++    CONFIG_EXTERNAL_MAIL_INTERVAL,    
+     CONFIG_UPTIME_UPDATE,
+     CONFIG_SKILL_CHANCE_ORANGE,
+     CONFIG_SKILL_CHANCE_YELLOW,
+@@ -793,6 +795,7 @@
+         time_t m_startTime;
+         time_t m_gameTime;
+         IntervalTimer m_timers[WUPDATE_COUNT];
++        IntervalTimer extmail_timer; 
+         time_t mail_timer;
+         time_t mail_timer_expires;
+         uint32 m_updateTime, m_updateTimeSum;
+diff -r f3f271b31071 -r c373e21d91d2 src/server/worldserver/worldserver.conf.dist
+--- a/src/server/worldserver/worldserver.conf.dist    Sat Oct 30 09:49:41 2010 +0300
++++ b/src/server/worldserver/worldserver.conf.dist    Sat Oct 30 10:20:55 2010 +0300
+@@ -911,6 +911,15 @@
+ #        Mail delivery delay time for item sending
+ #        Default: 3600 sec (1 hour)
+ #
++#    ExternalMail
++#        Enable external mail delivery from mail_external table.
++#        Default: 0 (disabled)
++#                 1 (enabled)
++#
++#    ExternalMailInterval
++#        Mail delivery delay time for item sending from mail_external table, in minutes.
++#        Default: 1 minute
++#
+ #    SkillChance.Prospecting
+ #        For prospecting skillup impossible by default,
+ #         but can be allowed as custom setting
+@@ -1011,6 +1020,8 @@
+ MaxGroupXPDistance = 74
+ MaxRecruitAFriendBonusDistance = 100
+ MailDeliveryDelay = 3600
++ExternalMail = 0
++ExternalMailInterval = 1
+ SkillChance.Prospecting = 0
+ SkillChance.Milling = 0
+ OffhandCheckAtSpellUnlearn = 1 
