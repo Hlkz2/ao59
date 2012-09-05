@@ -51,60 +51,60 @@ bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint3
 	case 1000:
 	    player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_AL, false);
-		player->UpdateSkill(SKILL_AL, 300);
+		player->UpdateSkill(SKILL_AL, 375);
 	    break;
 	case 1001:
 	    player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_BS, false);
-		player->UpdateSkill(SKILL_BS, 300);
+		player->UpdateSkill(SKILL_BS, 375);
 	    break;
 	case 1002:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_EN, false);
-		player->UpdateSkill(SKILL_EN, 300);
+		player->UpdateSkill(SKILL_EN, 375);
 		break;
 	case 1003:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_EG, false);
-		player->UpdateSkill(SKILL_EG, 300);
+		player->UpdateSkill(SKILL_EG, 375);
 		break;
 	case 1004:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_HE, false);
 		player->learnSpell(55501, false);
-		player->UpdateSkill(SKILL_HE, 300);
+		player->UpdateSkill(SKILL_HE, 375);
 		break;
 	case 1005:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_IN, false);
-		player->UpdateSkill(SKILL_IN, 300);
+		player->UpdateSkill(SKILL_IN, 375);
 		break;
 	case 1006:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_JC, false);
-		player->UpdateSkill(SKILL_JC, 300);
+		player->UpdateSkill(SKILL_JC, 375);
 		break;
 	case 1007:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_LW, false);
-		player->UpdateSkill(SKILL_LW, 300);
+		player->UpdateSkill(SKILL_LW, 375);
 		break;
 	case 1008:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_MI, false);
 		player->learnSpell(53123, false);
-		player->UpdateSkill(SKILL_MI, 300);
+		player->UpdateSkill(SKILL_MI, 375);
 		break;
 	case 1009:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_SK, false);
 		player->learnSpell(53664, false);
-		player->UpdateSkill(SKILL_SK, 300);
+		player->UpdateSkill(SKILL_SK, 375);
 		break;
 	case 1010:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_TA, false);
-		player->UpdateSkill(SKILL_TA, 300);
+		player->UpdateSkill(SKILL_TA, 375);
 		break;
 		}
 	}
