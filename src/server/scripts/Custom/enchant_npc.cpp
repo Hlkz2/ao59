@@ -40,7 +40,7 @@ void Ench(Player *player, Creature *creature, uint32 slotid, uint32 enchid, uint
 		creature->MonsterWhisper("L'objet n'est pas d'un niveau suffisant.", player->GetGUID());
 		MainMenu(player, creature);
         return; }
-    if (enchid == 1 && item->GetTemplate()->SubClass != 10) {
+    if (twoha == 2 && item->GetTemplate()->SubClass != 10) {
 		creature->MonsterWhisper("Cet enchantement requiert un bâton.", player->GetGUID());
 		MainMenu(player, creature);
         return; }
@@ -87,7 +87,7 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 		player->ADD_GOSSIP_ITEM(3, "7 résistances", GOSSIP_SENDER_MAIN, 1408);
 		player->ADD_GOSSIP_ITEM(3, "12 esquive", GOSSIP_SENDER_MAIN, 1406);
 		player->ADD_GOSSIP_ITEM(3, "35 pénétration des sorts", GOSSIP_SENDER_MAIN, 1409);
-		player->ADD_GOSSIP_ITEM(3, "20 résistance ombre", GOSSIP_SENDER_MAIN, 1403);
+		player->ADD_GOSSIP_ITEM(3, "20 résistance ombre", GOSSIP_SENDER_MAIN, 1419);
 		player->ADD_GOSSIP_ITEM(3, "20 résistance feu", GOSSIP_SENDER_MAIN, 1405);
 		player->ADD_GOSSIP_ITEM(3, "20 résistance givre", GOSSIP_SENDER_MAIN, 1418);
 		player->ADD_GOSSIP_ITEM(3, "20 résistance arcane", GOSSIP_SENDER_MAIN, 1410);
@@ -97,7 +97,7 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 		player->ADD_GOSSIP_ITEM(3, "16 score de défense", GOSSIP_SENDER_MAIN, 1415);
 		player->ADD_GOSSIP_ITEM(3, "225 armure", GOSSIP_SENDER_MAIN, 1416);
 		player->ADD_GOSSIP_ITEM(3, "23 hâte", GOSSIP_SENDER_MAIN, 1417);
-		player->ADD_GOSSIP_ITEM(3, "22 agilité", GOSSIP_SENDER_MAIN, 1417);
+		player->ADD_GOSSIP_ITEM(3, "22 agilité", GOSSIP_SENDER_MAIN, 1403);
 		player->ADD_GOSSIP_ITEM(0, "=> Retour", GOSSIP_SENDER_MAIN, 100);
 		player->SEND_GOSSIP_MENU(20004, creature->GetGUID());
 		break;
@@ -109,33 +109,43 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 	case 1408:	Ench(player, creature, 14, 2663, 0, 1, 0);	break;
 	case 1409:	Ench(player, creature, 14, 3243, 0, 2, 0);	break;
 	case 1410:	Ench(player, creature, 14, 1262, 0, 2, 0);	break;
-	case 1413:	Ench(player, creature, 14, 1888, 0, 0, 0);	break;
 	case 1414:	Ench(player, creature, 14, 3296, 0, 2, 0);	break;
 	case 1415:	Ench(player, creature, 14, 1951, 0, 2, 0);	break;
 	case 1416:	Ench(player, creature, 14, 3294, 0, 2, 0);	break;
 	case 1417:	Ench(player, creature, 14, 3831, 0, 2, 0);	break;
 	case 1418:	Ench(player, creature, 14, 3230, 0, 2, 0);	break;
+	case 1419:	Ench(player, creature, 14, 1446, 0, 2, 0);	break;
 
 		
 // Torse
 	case 4:
 		player->ADD_GOSSIP_ITEM(3, "275 vie", GOSSIP_SENDER_MAIN, 401);
+		player->ADD_GOSSIP_ITEM(3, "100 vie", GOSSIP_SENDER_MAIN, 402);
 		player->ADD_GOSSIP_ITEM(3, "250 mana", GOSSIP_SENDER_MAIN, 410);
+		player->ADD_GOSSIP_ITEM(3, "100 mana", GOSSIP_SENDER_MAIN, 403);
 		player->ADD_GOSSIP_ITEM(3, "10 caractéristiques", GOSSIP_SENDER_MAIN, 400);
+		player->ADD_GOSSIP_ITEM(3, "4 caracteristiques", GOSSIP_SENDER_MAIN, 404);
+		player->ADD_GOSSIP_ITEM(3, "8 endurance", GOSSIP_SENDER_MAIN, 411);
 		player->ADD_GOSSIP_ITEM(3, "10 mana par 5 secondes", GOSSIP_SENDER_MAIN, 405);
 		player->ADD_GOSSIP_ITEM(3, "15 esprit", GOSSIP_SENDER_MAIN, 407);
 		player->ADD_GOSSIP_ITEM(3, "20 résilience", GOSSIP_SENDER_MAIN, 408);
 		player->ADD_GOSSIP_ITEM(3, "22 score de défense", GOSSIP_SENDER_MAIN, 409);
+		player->ADD_GOSSIP_ITEM(3, "8 score de défense", GOSSIP_SENDER_MAIN, 412);
 		player->ADD_GOSSIP_ITEM(0, "=> Retour", GOSSIP_SENDER_MAIN, 100);
 		player->SEND_GOSSIP_MENU(20005, creature->GetGUID());
 		break;
 	case 400:	Ench(player, creature, 4, 3832, 0, 2, 0);	break;
 	case 401:	Ench(player, creature, 4, 3297, 0, 2, 0);	break;
+	case 402:	Ench(player, creature, 4, 1892, 0, 0, 0);	break;
+	case 403:	Ench(player, creature, 4, 1893, 0, 0, 0);	break;
+	case 404:	Ench(player, creature, 4, 1891, 0, 0, 0);	break;
 	case 405:	Ench(player, creature, 4, 2852, 0, 2, 0);	break;
 	case 407:	Ench(player, creature, 4, 1144, 0, 1, 0);	break;
 	case 408:	Ench(player, creature, 4, 3245, 0, 2, 0);	break;
 	case 409:	Ench(player, creature, 4, 1953, 0, 2, 0);	break;
 	case 410:	Ench(player, creature, 4, 3233, 0, 2, 0);	break;
+	case 411:	Ench(player, creature, 4, 2792, 0, 0, 0);	break;
+	case 412:	Ench(player, creature, 4, 2793, 0, 0, 0);	break;
   
 // Bras
 	case 8:
@@ -165,15 +175,18 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 
 // Mains
 	case 9:
-		player->ADD_GOSSIP_ITEM(3, "15 force", GOSSIP_SENDER_MAIN, 904);
-		player->ADD_GOSSIP_ITEM(3, "20 agilité", GOSSIP_SENDER_MAIN, 901);
-		player->ADD_GOSSIP_ITEM(3, "20 toucher", GOSSIP_SENDER_MAIN, 903);
-		player->ADD_GOSSIP_ITEM(3, "16 critique", GOSSIP_SENDER_MAIN, 902);
 		player->ADD_GOSSIP_ITEM(3, "44 puissance d'attaque", GOSSIP_SENDER_MAIN, 905);
 		player->ADD_GOSSIP_ITEM(3, "28 puissance des sorts", GOSSIP_SENDER_MAIN, 906);
-		player->ADD_GOSSIP_ITEM(3, "10 hâte", GOSSIP_SENDER_MAIN, 907);
+		player->ADD_GOSSIP_ITEM(3, "20 toucher", GOSSIP_SENDER_MAIN, 903);
+		player->ADD_GOSSIP_ITEM(3, "16 critique", GOSSIP_SENDER_MAIN, 902);
 		player->ADD_GOSSIP_ITEM(3, "15 expertise", GOSSIP_SENDER_MAIN, 910);
+		player->ADD_GOSSIP_ITEM(3, "20 agilité", GOSSIP_SENDER_MAIN, 901);
+		player->ADD_GOSSIP_ITEM(3, "15 force", GOSSIP_SENDER_MAIN, 904);
+		player->ADD_GOSSIP_ITEM(3, "8 endurance", GOSSIP_SENDER_MAIN, 912);
+		player->ADD_GOSSIP_ITEM(3, "4 mana par 5 secondes", GOSSIP_SENDER_MAIN, 914);
+		player->ADD_GOSSIP_ITEM(3, "10 hâte", GOSSIP_SENDER_MAIN, 907);
 		player->ADD_GOSSIP_ITEM(3, "10 score de parades et +2% menace", GOSSIP_SENDER_MAIN, 909);
+		player->ADD_GOSSIP_ITEM(3, "8 score de défense", GOSSIP_SENDER_MAIN, 913);
 		player->ADD_GOSSIP_ITEM(3, "2% vitesse monture", GOSSIP_SENDER_MAIN, 908);
 		player->ADD_GOSSIP_ITEM(3, "5 pêche", GOSSIP_SENDER_MAIN, 900);
 		player->ADD_GOSSIP_ITEM(3, "5 collecte", GOSSIP_SENDER_MAIN, 911);
@@ -192,9 +205,24 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 	case 909:	Ench(player, creature, 9, 3253, 0, 2, 0);	break;
 	case 910:	Ench(player, creature, 9, 3231, 0, 2, 0);	break;
 	case 911:	Ench(player, creature, 9, 3238, 0, 2, 0);	break;
+	case 912:	Ench(player, creature, 9, 2792, 0, 0, 0);	break; //renforts
+	case 913:	Ench(player, creature, 9, 2793, 0, 0, 0);	break;
+	case 914:	Ench(player, creature, 9, 2794, 0, 0, 0);	break;
 
 // Jambes
-	case 6:	Ench(player, creature, 6, 18, 0, 0, 0);	break;
+// Mains
+	case 6:
+		player->ADD_GOSSIP_ITEM(3, "40 armure", GOSSIP_SENDER_MAIN, 600);
+		player->ADD_GOSSIP_ITEM(3, "8 endurance", GOSSIP_SENDER_MAIN, 601);
+		player->ADD_GOSSIP_ITEM(3, "8 score de défense", GOSSIP_SENDER_MAIN, 602);
+		player->ADD_GOSSIP_ITEM(3, "4 mana par seconde", GOSSIP_SENDER_MAIN, 603);
+		player->ADD_GOSSIP_ITEM(0, "= Retour =", GOSSIP_SENDER_MAIN, 100);
+		player->SEND_GOSSIP_MENU(20007, creature->GetGUID());
+		break;
+	case 600:	Ench(player, creature, 6, 1843, 0, 0, 0);	break;
+	case 601:	Ench(player, creature, 6, 2792, 0, 0, 0);	break;
+	case 602:	Ench(player, creature, 6, 2793, 0, 0, 0);	break;
+	case 603:	Ench(player, creature, 6, 2794, 0, 0, 0);	break;
 
 // Bottes
 	case 7:
@@ -206,6 +234,7 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 		player->ADD_GOSSIP_ITEM(3, "32 puissance d'attaque", GOSSIP_SENDER_MAIN, 704);
 		player->ADD_GOSSIP_ITEM(3, "7 vie et mana par 5 secondes", GOSSIP_SENDER_MAIN, 700);
 		player->ADD_GOSSIP_ITEM(3, "12 toucher et critique", GOSSIP_SENDER_MAIN, 702);
+		player->ADD_GOSSIP_ITEM(3, "8 score de défense", GOSSIP_SENDER_MAIN, 709);
 		player->ADD_GOSSIP_ITEM(3, "5 toucher", GOSSIP_SENDER_MAIN, 706);
 		player->ADD_GOSSIP_ITEM(0, "=> Retour", GOSSIP_SENDER_MAIN, 100);
 		player->SEND_GOSSIP_MENU(20008, creature->GetGUID());
@@ -219,6 +248,7 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 	case 706:	Ench(player, creature, 7, 3858, 0, 0, 0);	break;
 	case 707:	Ench(player, creature, 7, 1597, 0, 2, 0);	break;
 	case 708:	Ench(player, creature, 7, 1147, 0, 2, 0);	break;
+	case 709:	Ench(player, creature, 7, 2793, 0, 0, 0);	break;
 		
 // Armes
 	case 15:	player->SetClmSlotid(15);	goto l16;	break;
@@ -226,58 +256,67 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 	case 153:	player->SetClmSlty(1);
 		player->ADD_GOSSIP_ITEM(0, "=> Page 2", GOSSIP_SENDER_MAIN, 154);
 		player->ADD_GOSSIP_ITEM(3, "50 endurance", GOSSIP_SENDER_MAIN, 1530);
-		player->ADD_GOSSIP_ITEM(3, "20 force", GOSSIP_SENDER_MAIN, 1508);
-		player->ADD_GOSSIP_ITEM(3, "26 agilité", GOSSIP_SENDER_MAIN, 1517);
 		player->ADD_GOSSIP_ITEM(3, "45 esprit", GOSSIP_SENDER_MAIN, 1504);
+		player->ADD_GOSSIP_ITEM(3, "26 agilité", GOSSIP_SENDER_MAIN, 1517);
 		player->ADD_GOSSIP_ITEM(3, "22 intelligence", GOSSIP_SENDER_MAIN, 1505);
+		player->ADD_GOSSIP_ITEM(3, "20 force", GOSSIP_SENDER_MAIN, 1508);
+		player->ADD_GOSSIP_ITEM(3, "15 agilité", GOSSIP_SENDER_MAIN, 1503);
 		player->ADD_GOSSIP_ITEM(3, "65 puissance d'attaque", GOSSIP_SENDER_MAIN, 1501);
 		player->ADD_GOSSIP_ITEM(3, "63 puissance des sorts", GOSSIP_SENDER_MAIN, 1515);
-		player->ADD_GOSSIP_ITEM(3, "50 feu et arcanes", GOSSIP_SENDER_MAIN, 1510);
-		player->ADD_GOSSIP_ITEM(3, "54 givre et ombre", GOSSIP_SENDER_MAIN, 1511);
-		player->ADD_GOSSIP_ITEM(3, "5 dégâts de l'arme", GOSSIP_SENDER_MAIN, 1521);
-		player->ADD_GOSSIP_ITEM(3, "7 dégâts de l'arme", GOSSIP_SENDER_MAIN, 1506);
+		player->ADD_GOSSIP_ITEM(3, "30 puissance des sorts", GOSSIP_SENDER_MAIN, 1538);
 		player->ADD_GOSSIP_ITEM(3, "25 critique et toucher", GOSSIP_SENDER_MAIN, 1533);
-		player->ADD_GOSSIP_ITEM(0, "=> Retour", GOSSIP_SENDER_MAIN, 100);
+		player->ADD_GOSSIP_ITEM(3, "7 dégâts de l'arme", GOSSIP_SENDER_MAIN, 1506);
+		player->ADD_GOSSIP_ITEM(3, "5 dégâts de l'arme", GOSSIP_SENDER_MAIN, 1521);
+		player->ADD_GOSSIP_ITEM(0, "= Retour =", GOSSIP_SENDER_MAIN, 100);
 		player->SEND_GOSSIP_MENU(20009, creature->GetGUID());
 		break;
 	case 154:
+		player->ADD_GOSSIP_ITEM(0, "=> Page 2", GOSSIP_SENDER_MAIN, 155);
 		player->ADD_GOSSIP_ITEM(0, "Page 1 <=", GOSSIP_SENDER_MAIN, 153);
+		player->ADD_GOSSIP_ITEM(3, "Berserker", GOSSIP_SENDER_MAIN, 1531);
+		player->ADD_GOSSIP_ITEM(3, "Magie noire", GOSSIP_SENDER_MAIN, 1532);
+		player->ADD_GOSSIP_ITEM(3, "Bourreau", GOSSIP_SENDER_MAIN, 1536);
+		player->ADD_GOSSIP_ITEM(3, "Mangouste", GOSSIP_SENDER_MAIN, 1512);
+		player->ADD_GOSSIP_ITEM(3, "Brise-glace", GOSSIP_SENDER_MAIN, 1520);
+		player->ADD_GOSSIP_ITEM(3, "Gardevie", GOSSIP_SENDER_MAIN, 1535);
+		player->ADD_GOSSIP_ITEM(3, "Maître de guerre", GOSSIP_SENDER_MAIN, 1514);
+		player->ADD_GOSSIP_ITEM(3, "Eruption de sort", GOSSIP_SENDER_MAIN, 1513);
 		player->ADD_GOSSIP_ITEM(3, "Croisé", GOSSIP_SENDER_MAIN, 1500);
 		player->ADD_GOSSIP_ITEM(3, "Vol-de-vie", GOSSIP_SENDER_MAIN, 1518);
-		player->ADD_GOSSIP_ITEM(3, "Brise-glace", GOSSIP_SENDER_MAIN, 1520);
+		player->ADD_GOSSIP_ITEM(3, "Flamboyante", GOSSIP_SENDER_MAIN, 1537);
+		player->ADD_GOSSIP_ITEM(3, "Impie", GOSSIP_SENDER_MAIN, 1519);
 		player->ADD_GOSSIP_ITEM(3, "Frisson glacial", GOSSIP_SENDER_MAIN, 1522);
 		player->ADD_GOSSIP_ITEM(3, "Tueur de démons", GOSSIP_SENDER_MAIN, 1523);
 		player->ADD_GOSSIP_ITEM(3, "Tueur de géants", GOSSIP_SENDER_MAIN, 1534);
-		player->ADD_GOSSIP_ITEM(3, "Eruption de sort", GOSSIP_SENDER_MAIN, 1513);
-		player->ADD_GOSSIP_ITEM(3, "Maître de guerre", GOSSIP_SENDER_MAIN, 1514);
-		player->ADD_GOSSIP_ITEM(3, "Gardevie", GOSSIP_SENDER_MAIN, 1535);
-		player->ADD_GOSSIP_ITEM(3, "Mangouste", GOSSIP_SENDER_MAIN, 1512);
-		player->ADD_GOSSIP_ITEM(3, "Bourreau", GOSSIP_SENDER_MAIN, 1536);
-		player->ADD_GOSSIP_ITEM(3, "Berserker", GOSSIP_SENDER_MAIN, 1531);
-		player->ADD_GOSSIP_ITEM(3, "Magie noire", GOSSIP_SENDER_MAIN, 1532);
-		player->ADD_GOSSIP_ITEM(3, "2M - 35 agilité", GOSSIP_SENDER_MAIN, 1526);
-		player->ADD_GOSSIP_ITEM(3, "2M - 9 dégâts de l'arme", GOSSIP_SENDER_MAIN, 1527);
+		player->ADD_GOSSIP_ITEM(0, "= Retour =", GOSSIP_SENDER_MAIN, 100);
+		player->SEND_GOSSIP_MENU(20009, creature->GetGUID());
+		break;
+	case 155:
+		player->ADD_GOSSIP_ITEM(0, "Page 2 <=", GOSSIP_SENDER_MAIN, 154);
+		player->ADD_GOSSIP_ITEM(3, "Bâton - 81 puissance des sorts", GOSSIP_SENDER_MAIN, 1540);
 		player->ADD_GOSSIP_ITEM(3, "2M - 110 puissance d'attaque", GOSSIP_SENDER_MAIN, 1525);
 		player->ADD_GOSSIP_ITEM(3, "2M - 140 puissance d'attaque contre les morts vivants", GOSSIP_SENDER_MAIN, 1525);
-		player->ADD_GOSSIP_ITEM(3, "Bâton - 81 puissance des sorts", GOSSIP_SENDER_MAIN, 1540);
-		player->ADD_GOSSIP_ITEM(0, "=> Retour", GOSSIP_SENDER_MAIN, 100);
+		player->ADD_GOSSIP_ITEM(3, "2M - 35 agilité", GOSSIP_SENDER_MAIN, 1526);
+		player->ADD_GOSSIP_ITEM(3, "2M - 25 agilité", GOSSIP_SENDER_MAIN, 1524);
+		player->ADD_GOSSIP_ITEM(3, "2M - 9 dégâts de l'arme", GOSSIP_SENDER_MAIN, 1527);
+		player->ADD_GOSSIP_ITEM(0, "= Retour =", GOSSIP_SENDER_MAIN, 100);
 		player->SEND_GOSSIP_MENU(20009, creature->GetGUID());
 		break;
 // 1M
 	case 1500:	Ench(player, creature, player->GetClmSlotid(), 1900, 0, 0, player->GetClmSlty());	break;
 	case 1501:	Ench(player, creature, player->GetClmSlotid(), 3833, 0, 2, player->GetClmSlty());	break;
+	case 1503:	Ench(player, creature, player->GetClmSlotid(), 2564, 0, 0, player->GetClmSlty());	break;
 	case 1504:	Ench(player, creature, player->GetClmSlotid(), 3844, 0, 2, player->GetClmSlty());	break;
 	case 1505:	Ench(player, creature, player->GetClmSlotid(), 2568, 0, 0, player->GetClmSlty());	break;
 	case 1506:	Ench(player, creature, player->GetClmSlotid(), 120, 0, 1, player->GetClmSlty());	break;
 	case 1508:	Ench(player, creature, player->GetClmSlotid(), 2668, 0, 1, player->GetClmSlty());	break;
-	case 1510:	Ench(player, creature, player->GetClmSlotid(), 2671, 0, 1, player->GetClmSlty());	break;
-	case 1511:	Ench(player, creature, player->GetClmSlotid(), 2672, 0, 1, player->GetClmSlty());	break;
 	case 1512:	Ench(player, creature, player->GetClmSlotid(), 2673, 0, 1, player->GetClmSlty());	break;
 	case 1513:	Ench(player, creature, player->GetClmSlotid(), 2674, 0, 1, player->GetClmSlty());	break;
 	case 1514:	Ench(player, creature, player->GetClmSlotid(), 2675, 0, 1, player->GetClmSlty());	break;
 	case 1515:	Ench(player, creature, player->GetClmSlotid(), 3834, 0, 2, player->GetClmSlty());	break;
 	case 1517:	Ench(player, creature, player->GetClmSlotid(), 1103, 0, 2, player->GetClmSlty());	break;
 	case 1518:	Ench(player, creature, player->GetClmSlotid(), 1898, 0, 0, player->GetClmSlty());	break;
+	case 1519:	Ench(player, creature, player->GetClmSlotid(), 1899, 0, 0, player->GetClmSlty());	break;
 	case 1520:	Ench(player, creature, player->GetClmSlotid(), 3239, 0, 2, player->GetClmSlty());	break;
 	case 1521:	Ench(player, creature, player->GetClmSlotid(), 118, 0, 0, player->GetClmSlty());	break;
 	case 1522:	Ench(player, creature, player->GetClmSlotid(), 1894, 0, 0, player->GetClmSlty());	break;
@@ -290,14 +329,17 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 	case 1534:	Ench(player, creature, player->GetClmSlotid(), 3251, 0, 2, player->GetClmSlty());	break;
 	case 1535:	Ench(player, creature, player->GetClmSlotid(), 3241, 0, 2, player->GetClmSlty());	break;
 	case 1536:	Ench(player, creature, player->GetClmSlotid(), 3225, 0, 2, player->GetClmSlty());	break;
+	case 1537:	Ench(player, creature, player->GetClmSlotid(), 803, 0, 0, player->GetClmSlty());	break;
+	case 1538:	Ench(player, creature, player->GetClmSlotid(), 2504, 0, 0, player->GetClmSlty());	break;
 	
 	
 // 2M
+	case 1524:	Ench(player, creature, player->GetClmSlotid(), 2646, 1, 0, player->GetClmSlty());	break;
 	case 1525:	Ench(player, creature, player->GetClmSlotid(), 3827, 1, 2, player->GetClmSlty());	break;
 	case 1526:	Ench(player, creature, player->GetClmSlotid(), 2670, 1, 1, player->GetClmSlty());	break;
 	case 1527:	Ench(player, creature, player->GetClmSlotid(), 1895, 1, 0, player->GetClmSlty());	break;
 	
-	case 1540:	Ench(player, creature, player->GetClmSlotid(), 3854, 1, 2, player->GetClmSlty());	break;
+	case 1540:	Ench(player, creature, player->GetClmSlotid(), 3854, 1, 3, player->GetClmSlty());	break;
 	case 1541:	Ench(player, creature, player->GetClmSlotid(), 3247, 1, 2, player->GetClmSlty());	break;
 
 // Boucliers
