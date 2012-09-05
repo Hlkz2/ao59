@@ -26,39 +26,75 @@ bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint3
 		player->learnSpell(18867, false);
 		player->learnSpell(18868, false);
 		player->learnSpell(18869, false);
-		player->learnSpell(18870, false); } // brulure de l'ombre
+		player->learnSpell(18870, false);
+		player->learnSpell(18871, false); } // brulure de l'ombre
 		if (player->HasSpell(11366)) {
 		player->learnSpell(12505, false);
 		player->learnSpell(12522, false);
 		player->learnSpell(12523, false);
 		player->learnSpell(12524, false);
-		player->learnSpell(12525, false); } // explosion pyrotechnique
+		player->learnSpell(12525, false);
+		player->learnSpell(12526, false); } // explosion pyrotechnique
 		if (player->HasSpell(11113)) {
 		player->learnSpell(13018, false);
-		player->learnSpell(13019, false); } // vague explosive
+		player->learnSpell(13019, false);
+		player->learnSpell(13020, false); } // vague explosive
 		if (player->HasSpell(5570)) {
 		player->learnSpell(24974, false);
-		player->learnSpell(24975, false); } // essaim d'insecte
+		player->learnSpell(24975, false);
+		player->learnSpell(24976, false); } // essaim d'insecte
 		if (player->HasSpell(19434)) {
 		player->learnSpell(20900, false);
 		player->learnSpell(20901, false);
-		player->learnSpell(20902, false); } // visée
+		player->learnSpell(20902, false);
+		player->learnSpell(20903, false); } // visée
 		if (player->HasSpell(15407)) {
 		player->learnSpell(17311, false);
 		player->learnSpell(17312, false);
-		player->learnSpell(17313, false); } // fouet mental
+		player->learnSpell(17313, false);
+		player->learnSpell(17314, false); } // fouet mental
 		if (player->HasSpell(19236)) {
 		player->learnSpell(19238, false);
 		player->learnSpell(19240, false);
-		player->learnSpell(19241, false); } // prière du désespoir
+		player->learnSpell(19241, false);
+		player->learnSpell(19242, false);
+		player->learnSpell(19243, false); } // prière du désespoir
 		if (player->HasSpell(20473)) {
-		player->learnSpell(20929, false); } // hotion sacre
+		player->learnSpell(20929, false);
+		player->learnSpell(20930, false); } // horion sacre
 		if (player->HasSpell(19306)) {
-		player->learnSpell(20909, false); } // contre-attaque
+		player->learnSpell(20909, false);
+		player->learnSpell(20910, false); } // contre-attaque
 		if (player->HasSpell(16511)) {
-		player->learnSpell(17347, false); } // hemorragie
+		player->learnSpell(17347, false);
+		player->learnSpell(17348, false); } // hemorragie
 		if (player->HasSpell(11426)) {
-		player->learnSpell(13031, false); } // barriere de glace
+		player->learnSpell(13031, false);
+		player->learnSpell(13032, false); } // barriere de glace
+		if (player->HasSpell(1329)) {
+		player->learnSpell(34411, false); } // estropier
+		if (player->HasSpell(724)) {
+		player->learnSpell(27870, false); } // puits de lumière
+		if (player->HasSpell(34861)) {
+		player->learnSpell(34863, false); } // cercle de soins
+		if (player->HasSpell(9800)) {
+		player->learnSpell(20927, false); } // bouclier sacre
+		if (player->HasSpell(33876)) {
+		player->learnSpell(33982, false);
+		player->learnSpell(33986, false); } // mutilation feral
+		if (player->HasSpell(18220)) {
+		player->learnSpell(18937, false); } // pacte noir
+		if (player->HasSpell(31661)) {
+		player->learnSpell(33041, false); } // souffle du dragon
+		if (player->HasSpell(55050)) {
+		player->learnSpell(55258, false); } // frappe au coeur
+		if (player->HasSpell(12294)) {
+		player->learnSpell(21551, false);
+		player->learnSpell(21552, false); } // frappe mortelle
+		if (player->HasSpell(19386)) {
+		player->learnSpell(24312, false); } // piqure wyverne
+		if (player->HasSpell(3674)) {
+		player->learnSpell(63668, false); } // fleche noire
 		player->UpdateSkill(185, 450); //cuisine
 		player->UpdateSkill(129, 450); //secourisme
 		player->learnSpell(33391, false);
