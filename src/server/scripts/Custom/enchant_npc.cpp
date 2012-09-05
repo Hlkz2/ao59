@@ -14,7 +14,7 @@ void MainMenu(Player *player, Creature *creature) {
         player->ADD_GOSSIP_ITEM(0, "Poignets", GOSSIP_SENDER_MAIN, 8);
         player->ADD_GOSSIP_ITEM(0, "Mains", GOSSIP_SENDER_MAIN, 9);
         Item *item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, 6); if(item)
-        player->ADD_GOSSIP_ITEM(0, "Jambes : Renfort d'armure épais", GOSSIP_SENDER_MAIN, 6);
+        player->ADD_GOSSIP_ITEM(0, "Jambes", GOSSIP_SENDER_MAIN, 6);
         player->ADD_GOSSIP_ITEM(0, "Pieds", GOSSIP_SENDER_MAIN, 7);
         player->ADD_GOSSIP_ITEM(0, "Main droite", GOSSIP_SENDER_MAIN, 15);		
         item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, 16); if(item) {
@@ -271,7 +271,7 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 		player->SEND_GOSSIP_MENU(20009, creature->GetGUID());
 		break;
 	case 154:
-		player->ADD_GOSSIP_ITEM(0, "=> Page 2", GOSSIP_SENDER_MAIN, 155);
+		player->ADD_GOSSIP_ITEM(0, "=> Page 3", GOSSIP_SENDER_MAIN, 155);
 		player->ADD_GOSSIP_ITEM(0, "Page 1 <=", GOSSIP_SENDER_MAIN, 153);
 		player->ADD_GOSSIP_ITEM(3, "Berserker", GOSSIP_SENDER_MAIN, 1531);
 		player->ADD_GOSSIP_ITEM(3, "Magie noire", GOSSIP_SENDER_MAIN, 1532);
@@ -339,7 +339,7 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 	case 1526:	Ench(player, creature, player->GetClmSlotid(), 2670, 1, 1, player->GetClmSlty());	break;
 	case 1527:	Ench(player, creature, player->GetClmSlotid(), 1895, 1, 0, player->GetClmSlty());	break;
 	
-	case 1540:	Ench(player, creature, player->GetClmSlotid(), 3854, 1, 3, player->GetClmSlty());	break;
+	case 1540:	Ench(player, creature, player->GetClmSlotid(), 3854, 2, 2, player->GetClmSlty());	break;
 	case 1541:	Ench(player, creature, player->GetClmSlotid(), 3247, 1, 2, player->GetClmSlty());	break;
 
 // Boucliers
