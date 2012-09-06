@@ -210,19 +210,18 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 	case 914:	Ench(player, creature, 9, 2794, 0, 0, 0);	break;
 
 // Jambes
-// Mains
 	case 6:
-		player->ADD_GOSSIP_ITEM(3, "40 armure", GOSSIP_SENDER_MAIN, 600);
-		player->ADD_GOSSIP_ITEM(3, "8 endurance", GOSSIP_SENDER_MAIN, 601);
-		player->ADD_GOSSIP_ITEM(3, "8 score de défense", GOSSIP_SENDER_MAIN, 602);
+		player->ADD_GOSSIP_ITEM(3, "35 puissance des sorts et 20 endurance", GOSSIP_SENDER_MAIN, 601);
+		player->ADD_GOSSIP_ITEM(3, "50 puissance d'attaque et 12 critique", GOSSIP_SENDER_MAIN, 604);
+		player->ADD_GOSSIP_ITEM(3, "12 agilité et 40 endurance", GOSSIP_SENDER_MAIN, 604);
 		player->ADD_GOSSIP_ITEM(3, "4 mana par seconde", GOSSIP_SENDER_MAIN, 603);
 		player->ADD_GOSSIP_ITEM(0, "= Retour =", GOSSIP_SENDER_MAIN, 100);
 		player->SEND_GOSSIP_MENU(20007, creature->GetGUID());
 		break;
-	case 600:	Ench(player, creature, 6, 1843, 0, 0, 0);	break;
-	case 601:	Ench(player, creature, 6, 2792, 0, 0, 0);	break;
-	case 602:	Ench(player, creature, 6, 2793, 0, 0, 0);	break;
+	case 601:	Ench(player, creature, 6, 2746, 0, 0, 0);	break;
 	case 603:	Ench(player, creature, 6, 2794, 0, 0, 0);	break;
+	case 604:	Ench(player, creature, 6, 3012, 0, 0, 0);	break;
+	case 605:	Ench(player, creature, 6, 3013, 0, 0, 0);	break;
 
 // Bottes
 	case 7:
