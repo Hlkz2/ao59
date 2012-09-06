@@ -213,7 +213,7 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 	case 6:
 		player->ADD_GOSSIP_ITEM(3, "35 puissance des sorts et 20 endurance", GOSSIP_SENDER_MAIN, 601);
 		player->ADD_GOSSIP_ITEM(3, "50 puissance d'attaque et 12 critique", GOSSIP_SENDER_MAIN, 604);
-		player->ADD_GOSSIP_ITEM(3, "12 agilité et 40 endurance", GOSSIP_SENDER_MAIN, 604);
+		player->ADD_GOSSIP_ITEM(3, "12 agilité et 40 endurance", GOSSIP_SENDER_MAIN, 605);
 		player->ADD_GOSSIP_ITEM(3, "4 mana par seconde", GOSSIP_SENDER_MAIN, 603);
 		player->ADD_GOSSIP_ITEM(0, "= Retour =", GOSSIP_SENDER_MAIN, 100);
 		player->SEND_GOSSIP_MENU(20007, creature->GetGUID());

@@ -1,17 +1,17 @@
 #include "ScriptPCH.h"
 
 enum Spells {
-	SPELL_BS	= 9785,
-	SPELL_JC	= 28895,
-	SPELL_EN	= 13920,
-	SPELL_AL	= 11611,
-	SPELL_EG	= 12656,
-	SPELL_IN	= 45360,
-	SPELL_TA	= 12180,
-	SPELL_MI	= 10248,
-	SPELL_HE	= 11993,
-	SPELL_LW	= 10662,
-	SPELL_SK	= 10768,
+	SPELL_BS	= 29844,
+	SPELL_JC	= 28897,
+	SPELL_EN	= 28029,
+	SPELL_AL	= 28596,
+	SPELL_EG	= 30350,
+	SPELL_IN	= 45361,
+	SPELL_TA	= 26790,
+	SPELL_MI	= 50310,
+	SPELL_HE	= 50300,
+	SPELL_LW	= 32549,
+	SPELL_SK	= 50305,
 
 	SKILL_BS	= 164,
 	SKILL_JC	= 755,
@@ -71,8 +71,8 @@ bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint3
 	case 1004:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_HE, false);
-		player->learnSpell(55501, false);
-		player->UpdateSkill(SKILL_HE, 375);
+		player->learnSpell(55503, false);
+		player->UpdateSkill(SKILL_HE, 450);
 		break;
 	case 1005:
 		player->CLOSE_GOSSIP_MENU();
@@ -92,14 +92,14 @@ bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint3
 	case 1008:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_MI, false);
-		player->learnSpell(53123, false);
-		player->UpdateSkill(SKILL_MI, 375);
+		player->learnSpell(53040, false);
+		player->UpdateSkill(SKILL_MI, 450);
 		break;
 	case 1009:
 		player->CLOSE_GOSSIP_MENU();
 		player->learnSpell(SPELL_SK, false);
-		player->learnSpell(53664, false);
-		player->UpdateSkill(SKILL_SK, 375);
+		player->learnSpell(53666, false);
+		player->UpdateSkill(SKILL_SK, 450);
 		break;
 	case 1010:
 		player->CLOSE_GOSSIP_MENU();
