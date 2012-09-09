@@ -36,8 +36,10 @@ void AddItemChoix(Player *player, uint32 item_id, int choix) {
 void MainMenu(Player *player, Creature *creature) {
 	player->ADD_GOSSIP_ITEM(6, "Rare..", GOSSIP_SENDER_MAIN, 150);
 	player->ADD_GOSSIP_ITEM(6, "Sacoche..", GOSSIP_SENDER_MAIN, 300);
-	player->ADD_GOSSIP_ITEM(6, "Atal'ai..", GOSSIP_SENDER_MAIN, 350);
-	player->ADD_GOSSIP_ITEM(6, "Inhabituel 47-49..", GOSSIP_SENDER_MAIN, 10);
+	player->ADD_GOSSIP_ITEM(6, "Sombrecrête (Plaque)", GOSSIP_SENDER_MAIN, 350);
+	player->ADD_GOSSIP_ITEM(6, "De Traqueur du néant (Maille)", GOSSIP_SENDER_MAIN, 400);
+	player->ADD_GOSSIP_ITEM(6, "Vengeur (Cuir)", GOSSIP_SENDER_MAIN, 450);
+	player->ADD_GOSSIP_ITEM(6, "De feu stellaire (Tissu)", GOSSIP_SENDER_MAIN, 500);
 	player->ADD_GOSSIP_ITEM(6, "Hors set", GOSSIP_SENDER_MAIN, 250);
 	player->SEND_GOSSIP_MENU(1000023, creature->GetGUID()); }
 	
@@ -50,16 +52,6 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 	
 	case 100: MainMenu(player, creature); break;
 	case 101: player->CLOSE_GOSSIP_MENU(); break;
-	
-    case 10:
-        player->SetRandRetour(action);
-        player->ADD_GOSSIP_ITEM(6, "Tissu..", GOSSIP_SENDER_MAIN, 400);
-        player->ADD_GOSSIP_ITEM(6, "Cuir..", GOSSIP_SENDER_MAIN, 500);
-        player->ADD_GOSSIP_ITEM(6, "Mailles..", GOSSIP_SENDER_MAIN, 600);
-        player->ADD_GOSSIP_ITEM(6, "Plaques..", GOSSIP_SENDER_MAIN, 700);
-        player->ADD_GOSSIP_ITEM(20, "= Retour =", GOSSIP_SENDER_MAIN, 100);
-        player->SEND_GOSSIP_MENU(1000023, creature->GetGUID());
-		break;
 
     case 150:
         player->SetRandRetour(action);
@@ -127,172 +119,117 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 		
     case 300:
         player->SetRandRetour(action);
-        player->ADD_GOSSIP_ITEM(6, "Sandales dénombrées (45)", GOSSIP_SENDER_MAIN, 302);
-        player->ADD_GOSSIP_ITEM(6, "Brassards dénombrés (45)", GOSSIP_SENDER_MAIN, 303);
-        player->ADD_GOSSIP_ITEM(6, "Croquenots vigoureux (45)", GOSSIP_SENDER_MAIN, 304);
-        player->ADD_GOSSIP_ITEM(6, "Brassards vigoureux.(45)", GOSSIP_SENDER_MAIN, 305);
-        player->ADD_GOSSIP_ITEM(6, "Bottes liées à la terre (45)", GOSSIP_SENDER_MAIN, 306);
-        player->ADD_GOSSIP_ITEM(6, "Garde-poignets liés à la terre (45)", GOSSIP_SENDER_MAIN, 307);
-        player->ADD_GOSSIP_ITEM(6, "Bottines infrangibles (45)", GOSSIP_SENDER_MAIN, 308);
-        player->ADD_GOSSIP_ITEM(6, "Poignets infrangibles (45)", GOSSIP_SENDER_MAIN, 309);
-        player->ADD_GOSSIP_ITEM(6, "Anneau tumultueux (35)", GOSSIP_SENDER_MAIN, 310);
-        player->ADD_GOSSIP_ITEM(6, "Protège-épaules dénombrés (35)", GOSSIP_SENDER_MAIN, 311);
-        player->ADD_GOSSIP_ITEM(6, "Spallières vigoureuses (35)", GOSSIP_SENDER_MAIN, 312);
-        player->ADD_GOSSIP_ITEM(6, "Garde-épaules liés à la terre (35)", GOSSIP_SENDER_MAIN, 313);
-        player->ADD_GOSSIP_ITEM(6, "Protège-épaules infrangibles (35)", GOSSIP_SENDER_MAIN, 314);
-        player->ADD_GOSSIP_ITEM(6, "Collier tumultueux (25)", GOSSIP_SENDER_MAIN, 315);
-        player->ADD_GOSSIP_ITEM(6, "Protège-mains dénombrés (25)", GOSSIP_SENDER_MAIN, 316);
-        player->ADD_GOSSIP_ITEM(6, "Garde-mains vigoureux (25)", GOSSIP_SENDER_MAIN, 317);
-        player->ADD_GOSSIP_ITEM(6, "Manicles liées à la terre (25)", GOSSIP_SENDER_MAIN, 318);
+        player->ADD_GOSSIP_ITEM(6, "Cape turbulente (60)", GOSSIP_SENDER_MAIN, 302);
+        player->ADD_GOSSIP_ITEM(6, "Collier turbulent (64)", GOSSIP_SENDER_MAIN, 303);
+        player->ADD_GOSSIP_ITEM(6, "Ceinturon lié à la terre (60)", GOSSIP_SENDER_MAIN, 304);
+        player->ADD_GOSSIP_ITEM(6, "Poignes liées à la terre (64)", GOSSIP_SENDER_MAIN, 305);
+        player->ADD_GOSSIP_ITEM(6, "Ceinture dénombrée (60)", GOSSIP_SENDER_MAIN, 306);
+        player->ADD_GOSSIP_ITEM(6, "Gants dénombrés (64)", GOSSIP_SENDER_MAIN, 307);
+        player->ADD_GOSSIP_ITEM(6, "Ceinture infrangible (60)", GOSSIP_SENDER_MAIN, 308);
+        player->ADD_GOSSIP_ITEM(6, "Poignes infrangibles (64)", GOSSIP_SENDER_MAIN, 309);
+        player->ADD_GOSSIP_ITEM(6, "Ceinture vigoureuse (60)", GOSSIP_SENDER_MAIN, 310);
+        player->ADD_GOSSIP_ITEM(6, "Gants vigoureux (64)", GOSSIP_SENDER_MAIN, 311);
         player->ADD_GOSSIP_ITEM(20, "= Retour =", GOSSIP_SENDER_MAIN, 100);
         player->SEND_GOSSIP_MENU(1000023, creature->GetGUID());
 		break;
-	    case 302: player->SetRandItId(51967); goto l276276; break;
-	    case 303: player->SetRandItId(51972); goto l276276; break;
-	    case 304: player->SetRandItId(51963); goto l276276; break;
-	    case 305: player->SetRandItId(51962); goto l276276; break;
-	    case 306: player->SetRandItId(51982); goto l276276; break;
-	    case 307: player->SetRandItId(51981); goto l276276; break;
-	    case 308: player->SetRandItId(51990); goto l276276; break;
-	    case 309: player->SetRandItId(51989); goto l276276; break;
-	    case 310: player->SetRandItId(51992); goto l276276; break;
-	    case 311: player->SetRandItId(51974); goto l276276; break;
-	    case 312: player->SetRandItId(51966); goto l276276; break;
-	    case 313: player->SetRandItId(51976); goto l276276; break;
-	    case 314: player->SetRandItId(51984); goto l276276; break;
-	    case 315: player->SetRandItId(51996); goto l276276; break;
-	    case 316: player->SetRandItId(51973); goto l276276; break;
-	    case 317: player->SetRandItId(51965); goto l276276; break;
-	    case 318: player->SetRandItId(51980); goto l276276; break;
+	    case 302: player->SetRandItId(51993); goto l276276; break;
+	    case 303: player->SetRandItId(51995); goto l276276; break;
+	    case 305: player->SetRandItId(51977); goto l276276; break;
+	    case 305: player->SetRandItId(51979); goto l276276; break;
+	    case 306: player->SetRandItId(51971); goto l276276; break;
+	    case 307: player->SetRandItId(51970); goto l276276; break;
+	    case 308: player->SetRandItId(51985); goto l276276; break;
+	    case 309: player->SetRandItId(51987); goto l276276; break;
+	    case 310: player->SetRandItId(51959); goto l276276; break;
+	    case 311: player->SetRandItId(51960); goto l276276; break;;
 
     case 350:
         player->SetRandRetour(action);
-        player->ADD_GOSSIP_ITEM(6, "Gants atal'ai (Tissu)", GOSSIP_SENDER_MAIN, 352);
-        player->ADD_GOSSIP_ITEM(6, "Spallières atal'ai (Cuir)", GOSSIP_SENDER_MAIN, 353);
-        player->ADD_GOSSIP_ITEM(6, "Jambières atal'ai (Cuir)", GOSSIP_SENDER_MAIN, 354);
-        player->ADD_GOSSIP_ITEM(6, "Cuirasse atal'ai (Mailles)", GOSSIP_SENDER_MAIN, 355);
-        player->ADD_GOSSIP_ITEM(6, "Bottes atal'ai (Mailles)", GOSSIP_SENDER_MAIN, 356);
-        player->ADD_GOSSIP_ITEM(6, "Ceinturon atal'ai (Plaques)", GOSSIP_SENDER_MAIN, 357);
+        player->ADD_GOSSIP_ITEM(6, "Diadème de feu stellaire", GOSSIP_SENDER_MAIN, 352);
+        player->ADD_GOSSIP_ITEM(6, "Mantelet de feu stellaire", GOSSIP_SENDER_MAIN, 353);
+        player->ADD_GOSSIP_ITEM(6, "Gilet de feu stellaire", GOSSIP_SENDER_MAIN, 354);
+        player->ADD_GOSSIP_ITEM(6, "Bandelettes de feu stellaire", GOSSIP_SENDER_MAIN, 355);
+        player->ADD_GOSSIP_ITEM(6, "Gants de feu stellaire", GOSSIP_SENDER_MAIN, 356);
+        player->ADD_GOSSIP_ITEM(6, "Echarpe de feu stellaire", GOSSIP_SENDER_MAIN, 357);
+        player->ADD_GOSSIP_ITEM(6, "Chausses de feu stellaire", GOSSIP_SENDER_MAIN, 358);
+        player->ADD_GOSSIP_ITEM(6, "Sandales de feu stellaire", GOSSIP_SENDER_MAIN, 359);
         player->ADD_GOSSIP_ITEM(20, "= Retour =", GOSSIP_SENDER_MAIN, 100);
         player->SEND_GOSSIP_MENU(1000023, creature->GetGUID());
 		break;
-	    case 352: player->SetRandItId(10787); goto l276276; break;
-	    case 353: player->SetRandItId(10783); goto l276276; break;
-	    case 354: player->SetRandItId(10785); goto l276276; break;
-	    case 355: player->SetRandItId(10784); goto l276276; break;
-	    case 356: player->SetRandItId(10786); goto l276276; break;
-	    case 357: player->SetRandItId(10788); goto l276276; break;
+	    case 352: player->SetRandItId(24601); goto l276276; break;
+	    case 353: player->SetRandItId(24603); goto l276276; break;
+	    case 354: player->SetRandItId(24599); goto l276276; break;
+	    case 355: player->SetRandItId(24604); goto l276276; break;
+	    case 356: player->SetRandItId(24600); goto l276276; break;
+	    case 357: player->SetRandItId(24597); goto l276276; break;
+	    case 358: player->SetRandItId(24602); goto l276276; break;
+	    case 359: player->SetRandItId(24598); goto l276276; break;
 		
     case 400:
         player->SetRandRetour(action);
-        player->ADD_GOSSIP_ITEM(6, "Couronne opulente", GOSSIP_SENDER_MAIN, 404);
-        player->ADD_GOSSIP_ITEM(6, "Espauliers arachnéens", GOSSIP_SENDER_MAIN, 405);
-        player->ADD_GOSSIP_ITEM(6, "Robe d'abjurateur", GOSSIP_SENDER_MAIN, 406);
-        player->ADD_GOSSIP_ITEM(6, "Tunique de Gaïa", GOSSIP_SENDER_MAIN, 407);
-        player->ADD_GOSSIP_ITEM(6, "Crispins de conseiller", GOSSIP_SENDER_MAIN, 408);
-        player->ADD_GOSSIP_ITEM(6, "Manchettes d'ossomancien", GOSSIP_SENDER_MAIN, 409);
-        player->ADD_GOSSIP_ITEM(6, "Echarpe de conseiller", GOSSIP_SENDER_MAIN, 410);
-        player->ADD_GOSSIP_ITEM(6, "Ceinture mystique", GOSSIP_SENDER_MAIN, 411);
-        player->ADD_GOSSIP_ITEM(6, "Jambières opulentes", GOSSIP_SENDER_MAIN, 412);
-        player->ADD_GOSSIP_ITEM(6, "Pantalon tissé de pénombre", GOSSIP_SENDER_MAIN, 413);
-        player->ADD_GOSSIP_ITEM(6, "Bottes mystique", GOSSIP_SENDER_MAIN, 414);
-        player->ADD_GOSSIP_ITEM(6, "Bottes d'ossomancien", GOSSIP_SENDER_MAIN, 415);
+        player->ADD_GOSSIP_ITEM(6, "Heaume vengeur", GOSSIP_SENDER_MAIN, 404);
+        player->ADD_GOSSIP_ITEM(6, "Espauliers vengeurs", GOSSIP_SENDER_MAIN, 405);
+        player->ADD_GOSSIP_ITEM(6, "Plastron vengeur", GOSSIP_SENDER_MAIN, 406);
+        player->ADD_GOSSIP_ITEM(6, "Poignets vengeurs", GOSSIP_SENDER_MAIN, 407);
+        player->ADD_GOSSIP_ITEM(6, "Gants vengeurs", GOSSIP_SENDER_MAIN, 408);
+        player->ADD_GOSSIP_ITEM(6, "Ceinture vengeresse", GOSSIP_SENDER_MAIN, 409);
+        player->ADD_GOSSIP_ITEM(6, "Garde-jambes vengeurs", GOSSIP_SENDER_MAIN, 410);
+        player->ADD_GOSSIP_ITEM(6, "Bottes vengeresses", GOSSIP_SENDER_MAIN, 411);
         player->ADD_GOSSIP_ITEM(20, "= Retour =", GOSSIP_SENDER_MAIN, 10);
         player->SEND_GOSSIP_MENU(1000023, creature->GetGUID());
 		break;
-	    case 404: player->SetRandItId(14281); goto l276276; break;
-	    case 405: player->SetRandItId(14296); goto l276276; break;
-	    case 406: player->SetRandItId(9943); goto l276276; break;
-	    case 407: player->SetRandItId(14277); goto l276276; break;
-	    case 408: player->SetRandItId(10096); goto l276276; break;
-	    case 409: player->SetRandItId(14301); goto l276276; break;
-	    case 410: player->SetRandItId(10103); goto l276276; break;
-	    case 411: player->SetRandItId(10180); goto l276276; break;
-	    case 412: player->SetRandItId(14283); goto l276276; break;
-	    case 413: player->SetRandItId(10064); goto l276276; break;
-	    case 414: player->SetRandItId(10179); goto l276276; break;
-	    case 415: player->SetRandItId(14299); goto l276276; break;
-
+	    case 404: player->SetRandItId(24713); goto l276276; break;
+	    case 405: player->SetRandItId(24715); goto l276276; break;
+	    case 406: player->SetRandItId(24711); goto l276276; break;
+	    case 407: player->SetRandItId(24716); goto l276276; break;
+	    case 408: player->SetRandItId(24712); goto l276276; break;
+	    case 409: player->SetRandItId(24709); goto l276276; break;
+	    case 410: player->SetRandItId(24714); goto l276276; break;
+	    case 411: player->SetRandItId(24715); goto l276276; break;
+		
+    case 450:
+        player->SetRandRetour(action);
+        player->ADD_GOSSIP_ITEM(6, "Casque de traqueur du Néant", GOSSIP_SENDER_MAIN, 454);
+        player->ADD_GOSSIP_ITEM(6, "Mantelet de traqueur du Néant", GOSSIP_SENDER_MAIN, 455);
+        player->ADD_GOSSIP_ITEM(6, "Armure de traqueur du Néant", GOSSIP_SENDER_MAIN, 456);
+        player->ADD_GOSSIP_ITEM(6, "Brassards de traqueur du Néant", GOSSIP_SENDER_MAIN, 457);
+        player->ADD_GOSSIP_ITEM(6, "Gants de traqueur du Néant", GOSSIP_SENDER_MAIN, 458);
+        player->ADD_GOSSIP_ITEM(6, "Ceinture de traqueur du Néant", GOSSIP_SENDER_MAIN, 459);
+        player->ADD_GOSSIP_ITEM(6, "Garde-jambes de traqueur du Néant", GOSSIP_SENDER_MAIN, 460);
+        player->ADD_GOSSIP_ITEM(6, "Grêves de traqueur du Néant", GOSSIP_SENDER_MAIN, 461);
+        player->ADD_GOSSIP_ITEM(20, "= Retour =", GOSSIP_SENDER_MAIN, 10);
+        player->SEND_GOSSIP_MENU(1000023, creature->GetGUID());
+		break;
+	    case 454: player->SetRandItId(24826); goto l276276; break;
+	    case 455: player->SetRandItId(24828); goto l276276; break;
+	    case 456: player->SetRandItId(24824); goto l276276; break;
+	    case 457: player->SetRandItId(24829); goto l276276; break;
+	    case 458: player->SetRandItId(24825); goto l276276; break;
+	    case 459: player->SetRandItId(24822); goto l276276; break;
+	    case 460: player->SetRandItId(24827); goto l276276; break;
+	    case 461: player->SetRandItId(24823); goto l276276; break;
+		
     case 500:
         player->SetRandRetour(action);
-        player->ADD_GOSSIP_ITEM(6, "Casque pieux", GOSSIP_SENDER_MAIN, 502);
-        player->ADD_GOSSIP_ITEM(6, "Cuirasse de chef", GOSSIP_SENDER_MAIN, 505);
-        player->ADD_GOSSIP_ITEM(6, "Armure tout-puissante", GOSSIP_SENDER_MAIN, 506);
-        player->ADD_GOSSIP_ITEM(6, "Brassards d'errant", GOSSIP_SENDER_MAIN, 507);
-        player->ADD_GOSSIP_ITEM(6, "Brassards de bretteur", GOSSIP_SENDER_MAIN, 508);
-        player->ADD_GOSSIP_ITEM(6, "Gants prétoriens", GOSSIP_SENDER_MAIN, 509);
-        player->ADD_GOSSIP_ITEM(6, "Gants de bretteur", GOSSIP_SENDER_MAIN, 510);
-        player->ADD_GOSSIP_ITEM(6, "Ceinture d'errant", GOSSIP_SENDER_MAIN, 511);
-        player->ADD_GOSSIP_ITEM(6, "Ceinturon prétorien", GOSSIP_SENDER_MAIN, 512);
-        player->ADD_GOSSIP_ITEM(6, "Bottes de bretteur", GOSSIP_SENDER_MAIN, 513);
-        player->ADD_GOSSIP_ITEM(6, "Solerets jadefeu", GOSSIP_SENDER_MAIN, 514);
+        player->ADD_GOSSIP_ITEM(6, "Casque sombrecrête", GOSSIP_SENDER_MAIN, 504);
+        player->ADD_GOSSIP_ITEM(6, "Espauliers sombrecrête", GOSSIP_SENDER_MAIN, 505);
+        player->ADD_GOSSIP_ITEM(6, "Cuirasse sombrecrête", GOSSIP_SENDER_MAIN, 506);
+        player->ADD_GOSSIP_ITEM(6, "Brassards sombrecrête", GOSSIP_SENDER_MAIN, 507);
+        player->ADD_GOSSIP_ITEM(6, "Gantelets sombrecrête", GOSSIP_SENDER_MAIN, 508);
+        player->ADD_GOSSIP_ITEM(6, "Ceinture sombrecrête", GOSSIP_SENDER_MAIN, 509);
+        player->ADD_GOSSIP_ITEM(6, "Garde-jambes sombrecrête", GOSSIP_SENDER_MAIN, 460);
+        player->ADD_GOSSIP_ITEM(6, "Solerets sombrecrête", GOSSIP_SENDER_MAIN, 461);
         player->ADD_GOSSIP_ITEM(20, "= Retour =", GOSSIP_SENDER_MAIN, 10);
         player->SEND_GOSSIP_MENU(1000023, creature->GetGUID());
 		break;
-	    case 502: player->SetRandItId(10073); goto l276276; break;
-	    case 505: player->SetRandItId(9650); goto l276276; break;
-	    case 506: player->SetRandItId(15170); goto l276276; break;
-	    case 507: player->SetRandItId(10107); goto l276276; break;
-	    case 508: player->SetRandItId(10184); goto l276276; break;
-	    case 509: player->SetRandItId(15180); goto l276276; break;
-	    case 510: player->SetRandItId(10186); goto l276276; break;
-	    case 511: player->SetRandItId(10109); goto l276276; break;
-	    case 512: player->SetRandItId(15180); goto l276276; break;
-	    case 513: player->SetRandItId(10064); goto l276276; break;
-	    case 514: player->SetRandItId(10183); goto l276276; break;
-	    case 515: player->SetRandItId(15389); goto l276276; break;
-
-    case 600:
-        player->SetRandRetour(action);
-        player->ADD_GOSSIP_ITEM(6, "Heaume de croisé", GOSSIP_SENDER_MAIN, 602);
-        player->ADD_GOSSIP_ITEM(6, "Diadème formidable", GOSSIP_SENDER_MAIN, 603);
-        player->ADD_GOSSIP_ITEM(6, "Epaulettes impitoyables", GOSSIP_SENDER_MAIN, 604);
-        player->ADD_GOSSIP_ITEM(6, "Espauliers en cuiracier", GOSSIP_SENDER_MAIN, 605);
-        player->ADD_GOSSIP_ITEM(6, "Brassards ornés", GOSSIP_SENDER_MAIN, 606);
-        player->ADD_GOSSIP_ITEM(6, "Gantelets impitoyables", GOSSIP_SENDER_MAIN, 607);
-        player->ADD_GOSSIP_ITEM(6, "Gantelets en cuiracier", GOSSIP_SENDER_MAIN, 608);
-        player->ADD_GOSSIP_ITEM(6, "Ceinture impitoyable", GOSSIP_SENDER_MAIN, 609);
-        player->ADD_GOSSIP_ITEM(6, "Ceinture de croisé", GOSSIP_SENDER_MAIN, 610);
-        player->ADD_GOSSIP_ITEM(6, "Jambières de croisé", GOSSIP_SENDER_MAIN, 611);
-        player->ADD_GOSSIP_ITEM(6, "Garde-jambes de seigneur", GOSSIP_SENDER_MAIN, 612);
-        player->ADD_GOSSIP_ITEM(20, "= Retour =", GOSSIP_SENDER_MAIN, 10);
-        player->SEND_GOSSIP_MENU(1000023, creature->GetGUID());
-		break;
-	    case 602: player->SetRandItId(10198); goto l276276; break;
-	    case 603: player->SetRandItId(15634); goto l276276; break;
-	    case 604: player->SetRandItId(15656); goto l276276; break;
-	    case 605: player->SetRandItId(15647); goto l276276; break;
-	    case 606: player->SetRandItId(10126); goto l276276; break;
-	    case 607: player->SetRandItId(15653); goto l276276; break;
-	    case 608: player->SetRandItId(15644); goto l276276; break;
-	    case 609: player->SetRandItId(15654); goto l276276; break;
-	    case 610: player->SetRandItId(10197); goto l276276; break;
-	    case 611: player->SetRandItId(10199); goto l276276; break;
-	    case 612: player->SetRandItId(10084); goto l276276; break;
-		
-    case 700:
-        player->SetRandRetour(action);
-        player->ADD_GOSSIP_ITEM(6, "Heaume lamellaire lourd", GOSSIP_SENDER_MAIN, 702);
-        player->ADD_GOSSIP_ITEM(6, "Espauliers lamellaires lourds", GOSSIP_SENDER_MAIN, 703);
-        player->ADD_GOSSIP_ITEM(6, "Espauliers de grand chef", GOSSIP_SENDER_MAIN, 704);
-        player->ADD_GOSSIP_ITEM(6, "Pansière de revenant", GOSSIP_SENDER_MAIN, 705);
-        player->ADD_GOSSIP_ITEM(6, "Cuirasse de jade", GOSSIP_SENDER_MAIN, 706);
-        player->ADD_GOSSIP_ITEM(6, "Brassards de templier", GOSSIP_SENDER_MAIN, 707);
-        player->ADD_GOSSIP_ITEM(6, "Jambières lamellaires lourdes", GOSSIP_SENDER_MAIN, 708);
-        player->ADD_GOSSIP_ITEM(6, "Garde-jambes de grand chef", GOSSIP_SENDER_MAIN, 709);
-        player->ADD_GOSSIP_ITEM(6, "Bottes lamellaires lourdes", GOSSIP_SENDER_MAIN, 710);
-        player->ADD_GOSSIP_ITEM(20, "= Retour =", GOSSIP_SENDER_MAIN, 10);
-        player->SEND_GOSSIP_MENU(1000023, creature->GetGUID());
-		break;
-	    case 702: player->SetRandItId(10241); goto l276276; break;
-	    case 703: player->SetRandItId(10245); goto l276276; break;
-	    case 704: player->SetRandItId(14963); goto l276276; break;
-	    case 705: player->SetRandItId(10128); goto l276276; break;
-	    case 706: player->SetRandItId(14915); goto l276276; break;
-	    case 707: player->SetRandItId(10171); goto l276276; break;
-	    case 708: player->SetRandItId(10244); goto l276276; break;
-	    case 709: player->SetRandItId(14962); goto l276276; break;
-	    case 710: player->SetRandItId(10238); goto l276276; break;
+	    case 504: player->SetRandItId(24938); goto l276276; break;
+	    case 505: player->SetRandItId(24940); goto l276276; break;
+	    case 506: player->SetRandItId(24936); goto l276276; break;
+	    case 507: player->SetRandItId(24941); goto l276276; break;
+	    case 508: player->SetRandItId(24937); goto l276276; break;
+	    case 509: player->SetRandItId(24934); goto l276276; break;
+	    case 460: player->SetRandItId(24939); goto l276276; break;
+	    case 461: player->SetRandItId(24935); goto l276276; break;
 
 l276276:
 		case 9999:
