@@ -134,7 +134,7 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 		break;
 	    case 302: player->SetRandItId(51993); goto l276276; break;
 	    case 303: player->SetRandItId(51995); goto l276276; break;
-	    case 305: player->SetRandItId(51977); goto l276276; break;
+	    case 304: player->SetRandItId(51977); goto l276276; break;
 	    case 305: player->SetRandItId(51979); goto l276276; break;
 	    case 306: player->SetRandItId(51971); goto l276276; break;
 	    case 307: player->SetRandItId(51970); goto l276276; break;
