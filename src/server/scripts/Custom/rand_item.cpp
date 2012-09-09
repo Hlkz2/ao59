@@ -36,10 +36,10 @@ void AddItemChoix(Player *player, uint32 item_id, int choix) {
 void MainMenu(Player *player, Creature *creature) {
 	player->ADD_GOSSIP_ITEM(6, "Rare..", GOSSIP_SENDER_MAIN, 150);
 	player->ADD_GOSSIP_ITEM(6, "Sacoche..", GOSSIP_SENDER_MAIN, 300);
-	player->ADD_GOSSIP_ITEM(6, "Sombrecrête (Plaque)", GOSSIP_SENDER_MAIN, 350);
-	player->ADD_GOSSIP_ITEM(6, "De Traqueur du néant (Maille)", GOSSIP_SENDER_MAIN, 400);
-	player->ADD_GOSSIP_ITEM(6, "Vengeur (Cuir)", GOSSIP_SENDER_MAIN, 450);
-	player->ADD_GOSSIP_ITEM(6, "De feu stellaire (Tissu)", GOSSIP_SENDER_MAIN, 500);
+	player->ADD_GOSSIP_ITEM(6, "Sombrecrête (Plaque)", GOSSIP_SENDER_MAIN, 500);
+	player->ADD_GOSSIP_ITEM(6, "De Traqueur du néant (Maille)", GOSSIP_SENDER_MAIN, 450);
+	player->ADD_GOSSIP_ITEM(6, "Vengeur (Cuir)", GOSSIP_SENDER_MAIN, 400);
+	player->ADD_GOSSIP_ITEM(6, "De feu stellaire (Tissu)", GOSSIP_SENDER_MAIN, 350);
 	player->ADD_GOSSIP_ITEM(6, "Hors set", GOSSIP_SENDER_MAIN, 250);
 	player->SEND_GOSSIP_MENU(1000023, creature->GetGUID()); }
 	
@@ -217,8 +217,8 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
         player->ADD_GOSSIP_ITEM(6, "Brassards sombrecrête", GOSSIP_SENDER_MAIN, 507);
         player->ADD_GOSSIP_ITEM(6, "Gantelets sombrecrête", GOSSIP_SENDER_MAIN, 508);
         player->ADD_GOSSIP_ITEM(6, "Ceinture sombrecrête", GOSSIP_SENDER_MAIN, 509);
-        player->ADD_GOSSIP_ITEM(6, "Garde-jambes sombrecrête", GOSSIP_SENDER_MAIN, 460);
-        player->ADD_GOSSIP_ITEM(6, "Solerets sombrecrête", GOSSIP_SENDER_MAIN, 461);
+        player->ADD_GOSSIP_ITEM(6, "Garde-jambes sombrecrête", GOSSIP_SENDER_MAIN, 510);
+        player->ADD_GOSSIP_ITEM(6, "Solerets sombrecrête", GOSSIP_SENDER_MAIN, 511);
         player->ADD_GOSSIP_ITEM(20, "= Retour =", GOSSIP_SENDER_MAIN, 10);
         player->SEND_GOSSIP_MENU(1000023, creature->GetGUID());
 		break;
@@ -228,8 +228,8 @@ bool OnGossipSelect(Player *player, Creature * creature, uint32 sender, uint32 a
 	    case 507: player->SetRandItId(24941); goto l276276; break;
 	    case 508: player->SetRandItId(24937); goto l276276; break;
 	    case 509: player->SetRandItId(24934); goto l276276; break;
-	    case 460: player->SetRandItId(24939); goto l276276; break;
-	    case 461: player->SetRandItId(24935); goto l276276; break;
+	    case 510: player->SetRandItId(24939); goto l276276; break;
+	    case 511: player->SetRandItId(24935); goto l276276; break;
 
 l276276:
 		case 9999:
